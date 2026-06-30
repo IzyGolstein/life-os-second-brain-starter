@@ -1,0 +1,4 @@
+interface:
+  display_name: "Career Risk Strategy"
+  short_description: "Plan career under geopolitical constraints."
+  default_prompt: "Use this skill to answer the user's career, migration, geopolitical and access risk, or AI-tool-access question with concrete options and current sources."

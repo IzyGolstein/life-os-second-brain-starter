@@ -1,0 +1,4 @@
+interface:
+  display_name: "Answer Harness"
+  short_description: "Route questions to compact researched answers."
+  default_prompt: "Use this skill to answer the user's substantive question with a compact final answer and saved appendix."

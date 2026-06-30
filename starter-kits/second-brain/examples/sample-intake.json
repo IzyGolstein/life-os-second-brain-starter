@@ -1,0 +1,105 @@
+{
+  "user": {
+    "id": "taylor",
+    "preferred_name": "Taylor",
+    "display_name": "Taylor Example",
+    "timezone": "Europe/Berlin",
+    "languages": ["en"],
+    "default_answer_language": "en",
+    "short_profile": [
+      "Builds small software products and writes technical notes.",
+      "Wants direct, compact answers with clear next actions."
+    ]
+  },
+  "answer_preferences": {
+    "tone": "direct, operational",
+    "default_length": "compact",
+    "depth_rule": "Use deep analysis only for irreversible decisions, research, or architecture.",
+    "browse_policy": "Browse for current, high-stakes, legal, medical, financial, job, product, or fast-changing facts.",
+    "citation_policy": "Cite sources when using external facts or comparing options.",
+    "save_policy": "Save low-risk project and answer pointers; ask before changing core memory.",
+    "bad_answer_patterns": [
+      "Generic productivity advice",
+      "Long lists without a recommendation",
+      "Invented context"
+    ],
+    "excellent_answer_patterns": [
+      "Reconstructs the real question",
+      "Gives a hard judgment",
+      "Shows uncertainty and next action"
+    ]
+  },
+  "goals": [
+    {
+      "id": "ship-side-project",
+      "title": "Ship a small side project",
+      "horizon": "3 months",
+      "why": "Build public proof of work.",
+      "success": "A usable product with 10 real users.",
+      "current_state": "Idea stage.",
+      "next_step": "Choose one narrow ICP and run a smoke test."
+    }
+  ],
+  "domains": ["coding", "product", "research"],
+  "skill_packs": ["core"],
+  "projects": [
+    {
+      "id": "side-project",
+      "title": "Side Project",
+      "status": "active",
+      "privacy": "sensitive",
+      "goal": "Find, validate, and ship one small product.",
+      "context": "Early exploration. No committed implementation yet.",
+      "out_of_scope": "Large platform, auth, billing, or mobile app before validation.",
+      "repos": [
+        {
+          "id": "side-project-app",
+          "url": "git@github.com:example/side-project-app.git",
+          "role": "external_project"
+        }
+      ],
+      "next_actions": [
+        "Write a one-page product brief.",
+        "List 20 target users."
+      ],
+      "done": "Validated wedge and first working prototype."
+    }
+  ],
+  "repos": [
+    {
+      "id": "side-project-app",
+      "url": "git@github.com:example/side-project-app.git",
+      "local_path": "",
+      "role": "external_project",
+      "description": "Product code repository.",
+      "validation": ["npm test"],
+      "secret_policy": "No secrets in git. Use .env.example only."
+    }
+  ],
+  "integrations": {
+    "telegram": {"enabled": false},
+    "voice_transcription": {"enabled": false},
+    "plane": {"enabled": false}
+  },
+  "privacy": {
+    "default": "sensitive",
+    "never_store": [
+      "passwords",
+      "API keys",
+      "private keys",
+      "bank access"
+    ],
+    "shareable_with_team": [
+      "public project notes",
+      "generic prompts",
+      "skills without private examples"
+    ],
+    "private": [
+      "profile",
+      "raw inbox",
+      "personal strategy",
+      "private project notes"
+    ]
+  }
+}
+

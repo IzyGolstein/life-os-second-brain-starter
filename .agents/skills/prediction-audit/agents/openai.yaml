@@ -1,0 +1,4 @@
+interface:
+  display_name: "Prediction Audit"
+  short_description: "Audit books and experts by checkable claims."
+  default_prompt: "Use this skill to turn a book, article, or expert's claims into a sourced prediction/factual audit."

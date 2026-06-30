@@ -1,0 +1,4 @@
+interface:
+  display_name: "Context Effects"
+  short_description: "Audit claims about context and performance."
+  default_prompt: "Use this skill to answer the user's psychology or environment-history question with primary evidence, effect sizes, and caveats."

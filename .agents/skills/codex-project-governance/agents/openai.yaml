@@ -1,0 +1,5 @@
+interface:
+  display_name: "Codex Project Governance"
+  short_description: "Set up safe Codex coding and review rules."
+  default_prompt: "Use this skill to configure a software repository for checkpointed Codex development and review."
+

@@ -1,0 +1,157 @@
+{
+  "version": 1,
+  "updated": "2026-06-30",
+  "policy": {
+    "selection_mode": "precision_first",
+    "default_pack": "core",
+    "runtime_source": ".agents/skills",
+    "rule": "Install core for every user; install domain packs only when the intake explicitly selects the domain or pack."
+  },
+  "domain_to_packs": {
+    "coding": [
+      "coding_default"
+    ],
+    "frontend": [
+      "frontend_ui"
+    ],
+    "provider_adapter": [
+      "provider_adapter"
+    ],
+    "research": [
+      "research_default"
+    ],
+    "product": [
+      "product_default"
+    ],
+    "career": [
+      "career_strategy"
+    ],
+    "admissions": [
+      "admissions"
+    ],
+    "english": [
+      "english_learning"
+    ],
+    "ml": [
+      "ml_research"
+    ],
+    "psychology": [
+      "psychology_evidence"
+    ],
+    "job_search": [
+      "job_search"
+    ],
+    "personal_planning": [
+      "personal_planning"
+    ]
+  },
+  "packs": {
+    "core": {
+      "default": true,
+      "summary": "Minimum second-brain answer and operating-system behavior.",
+      "skills": [
+        "answer-harness",
+        "personal-operating-system",
+        "life-os-learn-from-feedback"
+      ]
+    },
+    "coding_default": {
+      "summary": "Safe bounded coding work in arbitrary repositories.",
+      "skills": [
+        "codex-project-governance",
+        "coding-repo-onboarding",
+        "coding-feature-implementation",
+        "coding-test-first",
+        "coding-debugging",
+        "coding-code-review",
+        "coding-verification-gate"
+      ]
+    },
+    "frontend_ui": {
+      "summary": "Frontend implementation and browser-facing QA.",
+      "skills": [
+        "frontend-implementation-qa",
+        "coding-feature-implementation",
+        "coding-test-first",
+        "coding-code-review"
+      ]
+    },
+    "provider_adapter": {
+      "summary": "Provider, bridge, shell, permission, and adapter work.",
+      "skills": [
+        "coding-provider-adapter",
+        "coding-security-sanity",
+        "coding-test-first",
+        "coding-code-review",
+        "coding-verification-gate"
+      ]
+    },
+    "research_default": {
+      "summary": "Source-backed research and evidence synthesis.",
+      "skills": [
+        "research-synthesis",
+        "prediction-audit"
+      ]
+    },
+    "product_default": {
+      "summary": "Product idea triage, discovery, and minimal experiments.",
+      "skills": [
+        "product-idea-triage",
+        "product-discovery-research",
+        "product-experiment-design"
+      ]
+    },
+    "career_strategy": {
+      "summary": "Career, migration, job-market, and risk strategy.",
+      "skills": [
+        "career-risk-strategy"
+      ]
+    },
+    "admissions": {
+      "summary": "Academic CV and motivation-letter workflows.",
+      "skills": [
+        "academic-cv-admissions",
+        "motivation-letter-admissions"
+      ]
+    },
+    "english_learning": {
+      "summary": "English/IELTS coaching.",
+      "skills": [
+        "ielts-english-coach"
+      ]
+    },
+    "ml_research": {
+      "summary": "Technical ML and causal/recommender/uplift review.",
+      "skills": [
+        "ml-research-review"
+      ]
+    },
+    "psychology_evidence": {
+      "summary": "Psychology, motivation, performance, and evidence claims.",
+      "skills": [
+        "evidence-context-effects"
+      ]
+    },
+    "job_search": {
+      "summary": "Vacancy search and verification.",
+      "skills": [
+        "vacancy-search-verification"
+      ]
+    },
+    "personal_planning": {
+      "summary": "Goals, projects, cadence, and reset planning.",
+      "skills": [
+        "personal-operating-system",
+        "recovery-reset-research"
+      ]
+    },
+    "life_review": {
+      "summary": "Feedback and memory improvement loops.",
+      "skills": [
+        "life-os-dream-review",
+        "life-os-learn-from-feedback",
+        "chat-feedback-extractor"
+      ]
+    }
+  }
+}

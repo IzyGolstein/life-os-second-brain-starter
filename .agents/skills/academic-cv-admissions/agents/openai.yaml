@@ -1,0 +1,4 @@
+interface:
+  display_name: "Academic CV Admissions"
+  short_description: "Convert application evidence into a scored academic CV."
+  default_prompt: "Use this skill to turn CV sources, admission criteria, certificates, recommendations, and project evidence into a concise academic CV plan or LaTeX draft."

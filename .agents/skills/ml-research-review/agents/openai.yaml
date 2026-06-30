@@ -1,0 +1,4 @@
+interface:
+  display_name: "ML Research Review"
+  short_description: "Review ML ideas with research-grade rigor."
+  default_prompt: "Use this skill to evaluate the user's ML idea with formalization, criticism, literature, and a falsification experiment."
