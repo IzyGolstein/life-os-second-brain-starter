@@ -35,6 +35,38 @@ Do not publish private repositories without explicit approval.
 
 ## What Codex Should Do
 
+Fast path:
+
+```bash
+git clone https://github.com/IzyGolstein/life-os-second-brain-starter.git
+cd life-os-second-brain-starter
+python3 scripts/setup_full_stack.py \
+  --workspace ~/second-brain-stack \
+  --user-id new-user \
+  --with-telegram \
+  --with-plane
+```
+
+This creates a draft intake at:
+
+```text
+~/second-brain-stack/new-user-intake.json
+```
+
+Edit it, then generate the private brain:
+
+```bash
+python3 scripts/setup_full_stack.py \
+  --workspace ~/second-brain-stack \
+  --user-id new-user \
+  --intake ~/second-brain-stack/new-user-intake.json \
+  --with-telegram \
+  --with-plane \
+  --generate
+```
+
+Manual Codex flow:
+
 Paste this into Codex:
 
 ```text
@@ -137,11 +169,16 @@ cp .env.example .env
 Tell me to fill `.env` with:
 - BOT_TOKEN
 - ALLOWED_TELEGRAM_IDS
-- INBOX_REPO_SSH_URL or local raw inbox path, depending on deployment
+- INBOX_REPO_SSH_URL
 - INBOX_REPO_BRANCH
 - TIMEZONE
 
 Do not ask me to paste the bot token into chat. Tell me to edit `.env` locally.
+
+The current Telegram bot writes to a Git inbox repository through
+`INBOX_REPO_SSH_URL`. For the Life OS target layout, that inbox repo should be
+the new user's private brain repo or a dedicated private raw inbox repo that is
+later migrated into `<user>-brain/inbox/telegram-raw/`.
 
 Step 5 - Optional Plane:
 
@@ -170,4 +207,3 @@ Final response:
 - Commands run
 - Remaining blockers
 ```
-
