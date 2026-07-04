@@ -11,10 +11,10 @@ Starter repo:
 git clone https://github.com/IzyGolstein/life-os-second-brain-starter.git
 ```
 
-Plane upstream:
+Life OS Plane UI:
 
 ```bash
-git clone https://github.com/makeplane/plane.git
+git clone https://github.com/IzyGolstein/life-os-plane.git
 ```
 
 Telegram bot public repo target:
@@ -23,15 +23,8 @@ Telegram bot public repo target:
 git clone https://github.com/IzyGolstein/life-os-telegram-inbox-bot.git
 ```
 
-If the Telegram bot clone returns 404, the public repo has not been published
-yet. Ask the user to explicitly approve publishing the sanitized bot code, then run:
-
-```bash
-cd "/Users/user/Documents/New project/telegram-inbox-bot"
-gh repo create IzyGolstein/life-os-telegram-inbox-bot --public --source=. --remote=public --push
-```
-
-Do not publish private repositories without explicit approval.
+Do not commit `.env`, bot tokens, API keys, private keys, database dumps, or
+private Life OS memory.
 
 ## What Codex Should Do
 
@@ -74,7 +67,7 @@ You are Codex setting up a new user's second-brain stack.
 
 Use these public repos:
 - starter: https://github.com/IzyGolstein/life-os-second-brain-starter
-- Plane upstream: https://github.com/makeplane/plane
+- Plane UI: https://github.com/IzyGolstein/life-os-plane
 - Telegram bot: https://github.com/IzyGolstein/life-os-telegram-inbox-bot
 
 Goal:
@@ -184,11 +177,12 @@ Step 5 - Optional Plane:
 
 If Plane UI is enabled:
 
-git clone https://github.com/makeplane/plane.git
+git clone https://github.com/IzyGolstein/life-os-plane.git
+cd life-os-plane
+cat LIFE_OS_SETUP.md
 
 Use Plane as the work surface. The private brain remains canonical Markdown.
 Do not store private profile, answers, or raw inbox inside Plane-only storage.
-If a Life OS Plane fork URL is provided later, use that fork instead of upstream.
 
 Step 6 - Optional project repos:
 

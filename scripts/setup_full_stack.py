@@ -12,7 +12,7 @@ from pathlib import Path
 
 DEFAULT_STARTER_REPO = "https://github.com/IzyGolstein/life-os-second-brain-starter.git"
 DEFAULT_TELEGRAM_REPO = "https://github.com/IzyGolstein/life-os-telegram-inbox-bot.git"
-DEFAULT_PLANE_REPO = "https://github.com/makeplane/plane.git"
+DEFAULT_PLANE_REPO = "https://github.com/IzyGolstein/life-os-plane.git"
 
 
 def run(cmd: list[str], cwd: Path | None = None, *, check: bool = True) -> subprocess.CompletedProcess[str]:
@@ -131,7 +131,7 @@ def main(argv: list[str] | None = None) -> int:
         plane_path = workspace / "plane"
         clone_or_pull(args.plane_repo, plane_path)
         print(f"Plane repo: {plane_path}")
-        print("Use upstream Plane docs to run self-host/runtime. Private brain remains canonical Markdown.")
+        print("Use LIFE_OS_SETUP.md in the Plane repo to run the Life OS Plane UI. Private brain remains canonical Markdown.")
 
     print("\nSummary")
     print(f"- Workspace: {workspace}")
@@ -145,4 +145,3 @@ def main(argv: list[str] | None = None) -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-
