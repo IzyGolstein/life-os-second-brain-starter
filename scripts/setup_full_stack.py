@@ -12,6 +12,7 @@ from pathlib import Path
 
 DEFAULT_STARTER_REPO = "https://github.com/IzyGolstein/life-os-second-brain-starter.git"
 DEFAULT_TELEGRAM_REPO = "https://github.com/IzyGolstein/life-os-telegram-inbox-bot.git"
+DEFAULT_CORE_REPO = "https://github.com/IzyGolstein/life-os-core.git"
 DEFAULT_PLANE_REPO = "https://github.com/IzyGolstein/life-os-plane.git"
 
 
@@ -84,8 +85,10 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--intake", default="", help="Path to completed intake JSON. If omitted, a draft is created.")
     parser.add_argument("--starter-repo", default=DEFAULT_STARTER_REPO)
     parser.add_argument("--telegram-repo", default=DEFAULT_TELEGRAM_REPO)
+    parser.add_argument("--core-repo", default=DEFAULT_CORE_REPO)
     parser.add_argument("--plane-repo", default=DEFAULT_PLANE_REPO)
     parser.add_argument("--with-telegram", action="store_true")
+    parser.add_argument("--with-core", action="store_true")
     parser.add_argument("--with-plane", action="store_true")
     parser.add_argument("--generate", action="store_true", help="Generate the private brain from the intake JSON.")
     args = parser.parse_args(argv)
@@ -127,11 +130,19 @@ def main(argv: list[str] | None = None) -> int:
         print(f"Telegram bot repo: {telegram_path}")
         print("Edit .env locally. Do not paste BOT_TOKEN into chat.")
 
+    if args.with_core:
+        core_path = workspace / "life-os-core"
+        clone_or_pull(args.core_repo, core_path)
+        print(f"Life OS Core repo: {core_path}")
+        print("Run it before Plane: python3 run_backend.py --host 127.0.0.1 --port 8765")
+
     if args.with_plane:
         plane_path = workspace / "plane"
         clone_or_pull(args.plane_repo, plane_path)
         print(f"Plane repo: {plane_path}")
-        print("Use LIFE_OS_SETUP.md in the Plane repo to run the Life OS Plane UI. Private brain remains canonical Markdown.")
+        print("Before the first dev run: npm exec --yes pnpm@11.3.0 -- turbo run build --filter=web^...")
+        if not args.with_core:
+            print("Warning: Plane Life OS routes need Life OS Core on http://127.0.0.1:8765.")
 
     print("\nSummary")
     print(f"- Workspace: {workspace}")
@@ -139,6 +150,7 @@ def main(argv: list[str] | None = None) -> int:
     print(f"- Intake: {intake_path}")
     print(f"- Private brain target: {brain_path}")
     print(f"- Telegram: {'enabled' if args.with_telegram else 'skipped'}")
+    print(f"- Life OS Core: {'enabled' if args.with_core else 'skipped'}")
     print(f"- Plane: {'enabled' if args.with_plane else 'skipped'}")
     return 0
 

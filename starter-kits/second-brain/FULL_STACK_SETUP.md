@@ -11,7 +11,13 @@ Starter repo:
 git clone https://github.com/IzyGolstein/life-os-second-brain-starter.git
 ```
 
-Life OS Plane UI:
+Life OS Core backend:
+
+```bash
+git clone https://github.com/IzyGolstein/life-os-core.git
+```
+
+Life OS Plane UI fork:
 
 ```bash
 git clone https://github.com/IzyGolstein/life-os-plane.git
@@ -23,8 +29,15 @@ Telegram bot public repo target:
 git clone https://github.com/IzyGolstein/life-os-telegram-inbox-bot.git
 ```
 
-Do not commit `.env`, bot tokens, API keys, private keys, database dumps, or
-private Life OS memory.
+If the Telegram bot clone returns 404, the public repo has not been published
+yet. Ask Alex to explicitly approve publishing the sanitized bot code, then run:
+
+```bash
+cd "/Users/alex/Documents/New project/telegram-inbox-bot"
+gh repo create IzyGolstein/life-os-telegram-inbox-bot --public --source=. --remote=public --push
+```
+
+Do not publish private repositories without explicit approval.
 
 ## What Codex Should Do
 
@@ -37,6 +50,7 @@ python3 scripts/setup_full_stack.py \
   --workspace ~/second-brain-stack \
   --user-id new-user \
   --with-telegram \
+  --with-core \
   --with-plane
 ```
 
@@ -54,6 +68,7 @@ python3 scripts/setup_full_stack.py \
   --user-id new-user \
   --intake ~/second-brain-stack/new-user-intake.json \
   --with-telegram \
+  --with-core \
   --with-plane \
   --generate
 ```
@@ -67,13 +82,14 @@ You are Codex setting up a new user's second-brain stack.
 
 Use these public repos:
 - starter: https://github.com/IzyGolstein/life-os-second-brain-starter
-- Plane UI: https://github.com/IzyGolstein/life-os-plane
+- Life OS Core backend: https://github.com/IzyGolstein/life-os-core
+- Life OS Plane UI fork: https://github.com/IzyGolstein/life-os-plane
 - Telegram bot: https://github.com/IzyGolstein/life-os-telegram-inbox-bot
 
 Goal:
 Clone the starter repo, ask me the intake questions, generate a private brain
-repo, optionally configure Telegram capture, and optionally clone Plane as the
-work-surface base.
+repo, optionally configure Telegram capture, and optionally clone Life OS Core
+plus the Life OS Plane UI as the work-surface stack.
 
 Step 1 - Clone starter:
 
@@ -173,18 +189,44 @@ The current Telegram bot writes to a Git inbox repository through
 the new user's private brain repo or a dedicated private raw inbox repo that is
 later migrated into `<user>-brain/inbox/telegram-raw/`.
 
-Step 5 - Optional Plane:
+Step 5 - Optional Life OS Core:
+
+If Plane UI is enabled, Life OS Core is required. It serves the local Life OS
+API used by chat, wiki, project pages, project files, task bridge endpoints,
+and lightweight Plane-compatible API routes.
+
+git clone https://github.com/IzyGolstein/life-os-core.git
+cd life-os-core
+python3 run_backend.py --host 127.0.0.1 --port 8765
+
+Verify:
+- http://127.0.0.1:8765/health returns ok.
+
+Step 6 - Optional Plane:
 
 If Plane UI is enabled:
 
 git clone https://github.com/IzyGolstein/life-os-plane.git
 cd life-os-plane
-cat LIFE_OS_SETUP.md
+npm exec --yes pnpm@11.3.0 -- install --frozen-lockfile
+npm exec --yes pnpm@11.3.0 -- turbo run build --filter=web^...
 
-Use Plane as the work surface. The private brain remains canonical Markdown.
-Do not store private profile, answers, or raw inbox inside Plane-only storage.
+Run the Life OS Plane UI against Life OS Core:
 
-Step 6 - Optional project repos:
+env VITE_LIFE_OS_PLANE_MODE=1 \
+  VITE_LIFE_OS_BRIDGE_TARGET=http://127.0.0.1:8765 \
+  VITE_API_PROXY_TARGET=http://127.0.0.1:8765 \
+  npm exec --yes pnpm@11.3.0 -- --filter=web dev
+
+Verify:
+- http://127.0.0.1:3000/life-os/chat
+- http://127.0.0.1:3000/life-os/wiki
+- http://127.0.0.1:3000/life-os/projects/life-os-plane/issues
+
+The private brain remains canonical Markdown. Do not store private profile,
+answers, or raw inbox inside Plane-only storage.
+
+Step 7 - Optional project repos:
 
 For each ordinary project repo I approve, run from the starter repo:
 
