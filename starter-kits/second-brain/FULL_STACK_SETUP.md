@@ -41,6 +41,17 @@ Do not publish private repositories without explicit approval.
 
 ## What Codex Should Do
 
+## Prerequisites On A New Computer
+
+- Git and GitHub access for cloning public repos.
+- Python 3.10+ for Life OS Core and the starter scripts.
+- Node.js `>=22.18.0` for the Plane fork.
+- Use the pinned Plane package manager through `npm exec --yes pnpm@11.3.0 -- ...`.
+  A globally installed pnpm can work, but the pinned command is the checked path.
+- Expect the first Plane install/build to be slow. It installs about 1,500
+  packages, builds Plane workspace packages into `dist/`, and then Vite does
+  a cold route compile on the first browser request.
+
 Fast path:
 
 ```bash
@@ -210,6 +221,10 @@ git clone https://github.com/IzyGolstein/life-os-plane.git
 cd life-os-plane
 npm exec --yes pnpm@11.3.0 -- install --frozen-lockfile
 npm exec --yes pnpm@11.3.0 -- turbo run build --filter=web^...
+
+Do not skip the build step on a fresh clone. Without it, the web app can return
+500 errors such as unresolved `@plane/constants`, because workspace packages
+point to `dist/` outputs that do not exist yet.
 
 Run the Life OS Plane UI against Life OS Core:
 
